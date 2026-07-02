@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#c0392b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Training">
+<title>トレーニングメニュー｜週3・全身法</title>
+<style>
+  :root{
+    --bg:#f6f7f9; --card:#ffffff; --ink:#1c2530; --sub:#6b7684;
+    --line:#e6e9ef; --accent:#c0392b; --accent-soft:#fdecea;
+    --ok:#1e9e6a; --ok-soft:#e6f6ef; --badge:#eef2f7; --badge-ink:#3a4a5a;
+    --shadow:0 1px 3px rgba(20,30,45,.06),0 6px 20px rgba(20,30,45,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0f1319; --card:#171d26; --ink:#e8edf3; --sub:#95a0ad;
+      --line:#242c37; --accent:#ff6b5b; --accent-soft:#2a1a18;
+      --ok:#4ad295; --ok-soft:#12241c; --badge:#212a35; --badge-ink:#b9c4d0;
+      --shadow:0 1px 3px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+    line-height:1.5; padding:0 14px calc(40px + env(safe-area-inset-bottom));
+    max-width:640px; margin:0 auto; font-size:16px;
+  }
+  header.top{
+    text-align:center; padding:22px 6px 10px;
+  }
+  header.top h1{font-size:20px; margin:0 0 4px; letter-spacing:.02em}
+  header.top .sub{color:var(--sub); font-size:13px}
+  .accent-bar{height:4px;width:44px;background:var(--accent);border-radius:99px;margin:10px auto 0}
+
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    box-shadow:var(--shadow); margin:14px 0; overflow:hidden;
+  }
+  .card-pad{padding:16px}
+
+  /* Weekly tracker */
+  .week h2{font-size:15px;margin:0 0 12px;display:flex;align-items:center;gap:8px}
+  .week .dot{width:9px;height:9px;border-radius:99px;background:var(--accent)}
+  .week-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+  .daybtn{
+    border:1.5px solid var(--line); background:transparent; border-radius:12px;
+    padding:12px 6px; text-align:center; cursor:pointer; color:var(--ink);
+    font-size:13px; font-weight:600; transition:.15s; min-height:60px;
+  }
+  .daybtn small{display:block;color:var(--sub);font-weight:500;font-size:11px;margin-top:3px}
+  .daybtn.done{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+  .daybtn.done small{color:var(--ok)}
+  .week-status{margin-top:12px;text-align:center;font-size:14px;font-weight:700}
+  .week-status.hit{color:var(--ok)}
+  .miniclear{display:block;margin:10px auto 0;background:none;border:none;color:var(--sub);font-size:12px;text-decoration:underline;cursor:pointer}
+
+  /* Accordion day */
+  .acc-head{
+    width:100%;display:flex;align-items:center;gap:12px;
+    background:none;border:none;padding:16px;cursor:pointer;color:var(--ink);text-align:left;
+  }
+  .acc-tag{
+    flex:none;width:38px;height:38px;border-radius:11px;background:var(--accent-soft);
+    color:var(--accent);font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center;
+  }
+  .acc-title{flex:1;min-width:0}
+  .acc-title b{font-size:16px;display:block}
+  .acc-title span{font-size:12px;color:var(--sub)}
+  .acc-count{font-size:12px;color:var(--sub);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .chev{flex:none;color:var(--sub);transition:transform .2s;font-size:13px}
+  .acc[open] .chev{transform:rotate(90deg)}
+  .acc summary{list-style:none}
+  .acc summary::-webkit-details-marker{display:none}
+
+  .progress{height:5px;background:var(--line);margin:0 16px;border-radius:99px;overflow:hidden}
+  .progress > i{display:block;height:100%;width:0;background:var(--ok);transition:width .25s}
+
+  ul.list{list-style:none;margin:6px 0 0;padding:8px 8px 12px}
+  li.ex{display:flex;gap:12px;align-items:flex-start;padding:11px 8px;border-radius:12px}
+  li.ex:active{background:var(--bg)}
+  .cb{
+    flex:none;width:26px;height:26px;border:2px solid var(--line);border-radius:8px;margin-top:1px;
+    display:flex;align-items:center;justify-content:center;transition:.15s;background:var(--card);
+  }
+  .cb svg{width:15px;height:15px;stroke:#fff;stroke-width:3.2;fill:none;opacity:0;transition:.12s}
+  li.ex.checked .cb{background:var(--ok);border-color:var(--ok)}
+  li.ex.checked .cb svg{opacity:1}
+  li.ex.checked .ex-name{color:var(--sub);text-decoration:line-through;text-decoration-color:var(--line)}
+  .ex-body{flex:1;min-width:0}
+  .ex-name{font-size:15px;font-weight:600}
+  .ex-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:5px}
+  .badge{font-size:11.5px;padding:2px 8px;border-radius:99px;background:var(--badge);color:var(--badge-ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .badge.w{background:var(--accent-soft);color:var(--accent)}
+  .badge.pow{background:#fff4e0;color:#b8730a}
+  @media (prefers-color-scheme:dark){.badge.pow{background:#2a2110;color:#f0b452}}
+  .dayfoot{display:flex;justify-content:flex-end;padding:0 16px 14px}
+  .resetday{background:none;border:1px solid var(--line);color:var(--sub);font-size:12px;padding:7px 12px;border-radius:10px;cursor:pointer}
+
+  /* Info blocks */
+  .info h2{font-size:15px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+  .info .ic{font-size:17px}
+  .flow{counter-reset:step;list-style:none;margin:0;padding:0}
+  .flow li{position:relative;padding:8px 0 8px 34px;font-size:14px;border-bottom:1px dashed var(--line)}
+  .flow li:last-child{border-bottom:none}
+  .flow li::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:8px;width:22px;height:22px;background:var(--accent);color:#fff;border-radius:99px;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .point{padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .point:last-child{border-bottom:none}
+  .point b{display:block;font-size:13px;color:var(--accent);margin-bottom:2px}
+  .note{font-size:13.5px;color:var(--sub);padding:9px 0;border-bottom:1px dashed var(--line)}
+  .note:last-child{border-bottom:none}
+  .note b{color:var(--ink)}
+
+  footer{text-align:center;color:var(--sub);font-size:11.5px;padding:20px 10px 6px}
+  .tip{background:var(--accent-soft);color:var(--accent);border-radius:12px;padding:12px 14px;font-size:13px;margin:14px 0;font-weight:600;text-align:center}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <h1>🥊 トレーニングメニュー</h1>
+  <div class="sub">週3・全身法ベース ／ ボクサー型のシャープな体</div>
+  <div class="accent-bar"></div>
+</header>
+
+<div class="tip">💡 iPhoneなら「共有 → ホーム画面に追加」でアプリのように使えます</div>
+
+<!-- 週間チェッカー -->
+<section class="card card-pad week">
+  <h2><span class="dot"></span>今週の出席（目標 週3）</h2>
+  <div class="week-grid">
+    <button class="daybtn" data-week="A">Day A<small>プッシュ</small></button>
+    <button class="daybtn" data-week="B">Day B<small>プル/ヒンジ</small></button>
+    <button class="daybtn" data-week="C">Day C<small>脚/心肺</small></button>
+  </div>
+  <div class="week-status" id="weekStatus">0 / 3 日</div>
+  <button class="miniclear" id="weekClear">今週をリセット</button>
+</section>
+
+<!-- Day A -->
+<details class="card acc" id="dayA" open>
+  <summary class="acc-head">
+    <span class="acc-tag">A</span>
+    <span class="acc-title"><b>プッシュ＋パワー</b><span>上半身の押す力・肩肘のキレ</span></span>
+    <span class="acc-count" data-count="A">0/5</span>
+    <span class="chev">▶</span>
+  </summary>
+  <div class="progress"><i data-bar="A"></i></div>
+  <ul class="list" data-day="A">
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">アブローラー</div><div class="ex-meta"><span class="badge">3×8–12</span><span class="badge">膝コロ→立ちコロ</span></div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">腕立て</div><div class="ex-meta"><span class="badge">3×限界手前</span></div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ベンチプレス</div><div class="ex-meta"><span class="badge">4×6–8</span><span class="badge w">35–42.5kg</span><span class="badge">RPE8</span></div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">懸垂</div><div class="ex-meta"><span class="badge">3×限界−1</span></div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ケトルベルスイング（股の下→体の正面へ振り上げ）</div><div class="ex-meta"><span class="badge pow">パワー</span><span class="badge">4×8</span><span class="badge w">16–20kg</span><span class="badge">背中まっすぐ</span></div></div></li>
+  </ul>
+  <div class="dayfoot"><button class="resetday" data-reset="A">この日のチェックを消す</button></div>
+</details>
+
+<!-- Day B -->
+<details class="card acc" id="dayB">
+  <summary class="acc-head">
+    <span class="acc-tag">B</span>
+    <span class="acc-title"><b>プル＋ヒンジ＋体幹</b><span>引く力・お尻ハム・腰にやさしく</span></span>
+    <span class="acc-count" data-count="B">0/6</span>
+    <span class="chev">▶</span>
+  </summary>
+  <div class="progress"><i data-bar="B"></i></div>
+  <ul class="list" data-day="B">
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">アブローラー</div><div class="ex-meta"><span class="badge">3×8–12</span><span class="badge">膝コロ→立ちコロ</span></div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">腕立て</div><div class="ex-meta"><span class="badge">3×限界手前</span></div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ボックスジャンプ or 立ち幅跳び</div><div class="ex-meta"><span class="badge pow">パワー</span><span class="badge">4×3</span><span class="badge">着地静かに</span></div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">デッドリフト（背中まっすぐ・上限60kg）</div><div class="ex-meta"><span class="badge">3×5</span><span class="badge w">50–60kg</span><span class="badge">腰は無理しない</span></div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ヒップスラスト</div><div class="ex-meta"><span class="badge">4×8–10</span><span class="badge w">50–70kg</span><span class="badge">RPE8</span></div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">仕上げ：スプリント（バイク/坂ダッシュ）</div><div class="ex-meta"><span class="badge">8×20秒</span><span class="badge">40秒休</span></div></div></li>
+  </ul>
+  <div class="dayfoot"><button class="resetday" data-reset="B">この日のチェックを消す</button></div>
+</details>
+
+<!-- Day C -->
+<details class="card acc" id="dayC">
+  <summary class="acc-head">
+    <span class="acc-tag">C</span>
+    <span class="acc-title"><b>脚＋全身アスレチック＋コンディション</b><span>単脚バランス・回旋パワー・キレ</span></span>
+    <span class="acc-count" data-count="C">0/6</span>
+    <span class="chev">▶</span>
+  </summary>
+  <div class="progress"><i data-bar="C"></i></div>
+  <ul class="list" data-day="C">
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">アブローラー</div><div class="ex-meta"><span class="badge">3×8–12</span><span class="badge">膝コロ→立ちコロ</span></div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">腕立て</div><div class="ex-meta"><span class="badge">3×限界手前</span></div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">スクワット</div><div class="ex-meta"><span class="badge">4×5–8</span><span class="badge w">55–70kg</span><span class="badge">RPE7-8・潰さない</span></div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ブルガリアンスクワット（単脚＝バランス）</div><div class="ex-meta"><span class="badge">3×8/脚</span><span class="badge w">片手8–12kg</span></div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ケトルベルスイング（軽め・フォーム優先）</div><div class="ex-meta"><span class="badge">3×10</span><span class="badge w">12–16kg</span><span class="badge">違和感で中止</span></div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">仕上げ：縄跳びサーキット</div><div class="ex-meta"><span class="badge">10分</span><span class="badge">インターバル</span></div></div></li>
+  </ul>
+  <div class="dayfoot"><button class="resetday" data-reset="C">この日のチェックを消す</button></div>
+</details>
+
+<!-- 1回の流れ -->
+<section class="card card-pad info">
+  <h2><span class="ic">🔁</span>1回の進め方（約50–60分）</h2>
+  <ol class="flow">
+    <li>ウォームアップ＆モビリティ（8分）</li>
+    <li>パワー系：低回数・全力・完全回復</li>
+    <li>主種目 2種目（中重量・RPE7-8）</li>
+    <li>補助 2種目</li>
+    <li>体幹 1–2種目</li>
+    <li>仕上げのコンディショニング（5–10分）</li>
+    <li>クールダウン・呼吸を整える</li>
+  </ol>
+</section>
+
+<!-- 目的別ポイント -->
+<section class="card card-pad info">
+  <h2><span class="ic">🎯</span>目的別のコツ</h2>
+  <div class="point"><b>運動神経・身体操作</b>頭の爆発系（スイング・ジャンプ）＋単脚（ブルガリアン）が要。質重視・全力・崩れる前にやめる。</div>
+  <div class="point"><b>ボクサー的シャープさ</b>筋量は増やさず「維持」。主種目はRPE7-8で止め、キレは縄跳び・シャドー・スプリントで作る。</div>
+  <div class="point"><b>肌をきれいに</b>発汗＋血流でターンオーバー促進。追い込みすぎ（高コルチゾール）は逆効果。トレ後は早めにシャワー・水分しっかり。</div>
+  <div class="point"><b>睡眠</b>筋トレは深い睡眠の味方。ただし高強度コンディショニングは就寝3–4時間前まで。</div>
+  <div class="point"><b>体型維持</b>タンパク質は1日約85–90g（体重×1.6g）目安。極端な減量はしない。</div>
+</section>
+
+<!-- 進め方・注意 -->
+<section class="card card-pad info">
+  <h2><span class="ic">📈</span>進め方・注意</h2>
+  <div class="note"><b>漸進：</b>2週ごとに「重量+2.5kg」か「+1回」を小さく更新。RPE8を超えたら据え置き。</div>
+  <div class="note"><b>デロード：</b>4週に1回、重量・量を6割に落として回復週。肌・睡眠にも効く。</div>
+  <div class="note"><b>腰の保護：</b>デッドは主役にしない。RDL/スイングは背中を丸めない・違和感が出たら即中止。</div>
+  <div class="note"><b>週3が崩れそうな週：</b>A→B→C の順なら2日でも全身に効く。「やらないよりずっと良い」。</div>
+</section>
+
+<footer>週3・全身法トレーニングメニュー<br>チェックはこの端末に自動保存されます</footer>
+
+<script>
+(function(){
+  var KEY='km_train_v1_';
+  function load(k,def){try{var v=localStorage.getItem(KEY+k);return v===null?def:JSON.parse(v)}catch(e){return def}}
+  function save(k,v){try{localStorage.setItem(KEY+k,JSON.stringify(v))}catch(e){}}
+
+  // ---- 各日のチェック ----
+  ['A','B','C'].forEach(function(day){
+    var ul=document.querySelector('ul[data-day="'+day+'"]');
+    var items=[].slice.call(ul.querySelectorAll('li.ex'));
+    var state=load('day'+day, items.map(function(){return false}));
+    if(!Array.isArray(state)||state.length!==items.length){state=items.map(function(){return false});}
+
+    function render(){
+      var done=0;
+      items.forEach(function(li,i){
+        if(state[i]){li.classList.add('checked');done++;}else{li.classList.remove('checked');}
+      });
+      document.querySelector('[data-count="'+day+'"]').textContent=done+'/'+items.length;
+      document.querySelector('[data-bar="'+day+'"]').style.width=(done/items.length*100)+'%';
+    }
+    items.forEach(function(li,i){
+      li.addEventListener('click',function(){
+        state[i]=!state[i]; save('day'+day,state); render();
+      });
+    });
+    var rb=document.querySelector('[data-reset="'+day+'"]');
+    rb.addEventListener('click',function(ev){
+      ev.preventDefault(); ev.stopPropagation();
+      state=items.map(function(){return false}); save('day'+day,state); render();
+    });
+    render();
+  });
+
+  // ---- 週間出席 ----
+  var week=load('week',{A:false,B:false,C:false});
+  function renderWeek(){
+    var n=0;
+    ['A','B','C'].forEach(function(d){
+      var btn=document.querySelector('.daybtn[data-week="'+d+'"]');
+      if(week[d]){btn.classList.add('done');n++;}else{btn.classList.remove('done');}
+    });
+    var s=document.getElementById('weekStatus');
+    s.textContent=n+' / 3 日'+(n>=3?'　達成！🎉':'');
+    s.classList.toggle('hit',n>=3);
+  }
+  document.querySelectorAll('.daybtn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var d=btn.getAttribute('data-week'); week[d]=!week[d]; save('week',week); renderWeek();
+    });
+  });
+  document.getElementById('weekClear').addEventListener('click',function(){
+    week={A:false,B:false,C:false}; save('week',week); renderWeek();
+  });
+  renderWeek();
+})();
+</script>
+</body>
+</html>

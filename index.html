@@ -94,6 +94,7 @@
   .ex-body{flex:1;min-width:0}
   .ex-name{font-size:15px;font-weight:600}
   .ex-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:5px}
+  .cue{font-size:12.5px;color:var(--sub);margin-top:6px;line-height:1.5;padding-left:9px;border-left:2px solid var(--line)}
   .badge{font-size:11.5px;padding:2px 8px;border-radius:99px;background:var(--badge);color:var(--badge-ink);font-weight:600;font-variant-numeric:tabular-nums}
   .badge.w{background:var(--accent-soft);color:var(--accent)}
   .badge.pow{background:#fff4e0;color:#b8730a}
@@ -133,7 +134,7 @@
 <section class="card card-pad week">
   <h2><span class="dot"></span>今週の出席（目標 週3）</h2>
   <div class="week-grid">
-    <button class="daybtn" data-week="A">Day A<small>プッシュ</small></button>
+    <button class="daybtn" data-week="A">Day A<small>上半身</small></button>
     <button class="daybtn" data-week="B">Day B<small>プル/ヒンジ</small></button>
     <button class="daybtn" data-week="C">Day C<small>脚/心肺</small></button>
   </div>
@@ -151,13 +152,13 @@
   </summary>
   <div class="progress"><i data-bar="A"></i></div>
   <ul class="list" data-day="A">
-    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">プライオ腕立て（手を浮かす/クラップ）</div><div class="ex-meta"><span class="badge pow">パワー</span><span class="badge">3×3–5</span><span class="badge">爆発的に・膝つき可</span></div></div></li>
-    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ベンチプレス</div><div class="ex-meta"><span class="badge">4×6–8</span><span class="badge w">35–42.5kg</span><span class="badge">RPE8</span></div></div></li>
-    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">懸垂（縦に引く）</div><div class="ex-meta"><span class="badge">4×限界−1</span></div></div></li>
-    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ダンベルショルダープレス（縦に押す）</div><div class="ex-meta"><span class="badge">3×8–10</span><span class="badge w">片手10–14kg</span><span class="badge">肩幅の要</span></div></div></li>
-    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ワンハンドDBロウ（横に引く）</div><div class="ex-meta"><span class="badge">3×8–10/側</span><span class="badge w">14–20kg</span></div></div></li>
-    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">サイドレイズ（肩幅）</div><div class="ex-meta"><span class="badge">3×12–15</span><span class="badge w">4–8kg</span><span class="badge">軽く効かせる</span></div></div></li>
-    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">アブローラー</div><div class="ex-meta"><span class="badge">3×8–12</span><span class="badge">締め・膝コロから</span></div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">プライオ腕立て（手を浮かす/クラップ）</div><div class="ex-meta"><span class="badge pow">パワー</span><span class="badge">3×3–5</span><span class="badge">爆発的に・膝つき可</span></div><div class="cue">膝つきでOK。1発ずつ全力で押し切る。着地は肘を柔らかく。回数を追わず、疲れる前にやめる（潰れると手首・肩を痛める）。</div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ベンチプレス</div><div class="ex-meta"><span class="badge">4×6–8</span><span class="badge w">35–42.5kg</span><span class="badge">RPE8</span></div><div class="cue">肩甲骨を寄せて“下げる”のが最重要。肘は45度、バーは乳首のライン。尻は台につけたまま。1〜2回残して終える。</div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">懸垂（縦に引く）</div><div class="ex-meta"><span class="badge">4×限界−1</span></div><div class="cue">腕から引かず、先に肩を下げる→胸をバーへ。反動を使わない。下は毎回しっかり伸ばす。キツければゴム/斜め懸垂で。</div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ダンベルショルダープレス（縦に押す）</div><div class="ex-meta"><span class="badge">3×8–10</span><span class="badge w">片手10–14kg</span><span class="badge">肩幅の要</span></div><div class="cue">座って背もたれあり。肘は真横でなく“やや前”。腰を反らずアバラを締めて真上へ。10kgから慎重に。</div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ワンハンドDBロウ（横に引く）</div><div class="ex-meta"><span class="badge">3×8–10/側</span><span class="badge w">14–20kg</span></div><div class="cue">背中は床と平行をキープ。肘を“腰のポケット”へ引く。肩甲骨から動かす。体をひねって上げない。</div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">サイドレイズ（肩幅）</div><div class="ex-meta"><span class="badge">3×12–15</span><span class="badge w">4–8kg</span><span class="badge">軽く効かせる</span></div><div class="cue">重さは要らない種目。肩をすくめない・反動を使わない。肘を少し曲げ、真横へ肩の高さまで。効かせ重視。</div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">アブローラー</div><div class="ex-meta"><span class="badge">3×8–12</span><span class="badge">締め・膝コロから</span></div><div class="cue">膝コロから。腰を反らさず、お腹を丸めたまま出る。出す時に息を吐く。腰に効いたら戻す距離を短く。</div></div></li>
   </ul>
   <div class="dayfoot"><button class="resetday" data-reset="A">この日のチェックを消す</button></div>
 </details>
@@ -172,13 +173,13 @@
   </summary>
   <div class="progress"><i data-bar="B"></i></div>
   <ul class="list" data-day="B">
-    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ボックスジャンプ or 立ち幅跳び</div><div class="ex-meta"><span class="badge pow">パワー</span><span class="badge">4×3</span><span class="badge">着地静かに</span></div></div></li>
-    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">デッドリフト（背中まっすぐ・上限60kg）</div><div class="ex-meta"><span class="badge">3×5</span><span class="badge w">50–60kg</span><span class="badge">腰は無理しない</span></div></div></li>
-    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ヒップスラスト</div><div class="ex-meta"><span class="badge">4×8–10</span><span class="badge w">50–70kg</span><span class="badge">RPE8</span></div></div></li>
-    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ワンハンドDBロウ（引く追加）</div><div class="ex-meta"><span class="badge">3×8–10/側</span><span class="badge w">14–20kg</span></div></div></li>
-    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">腕立て</div><div class="ex-meta"><span class="badge">3×限界手前</span></div></div></li>
-    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">アブローラー</div><div class="ex-meta"><span class="badge">3×8–12</span><span class="badge">締め・膝コロから</span></div></div></li>
-    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">仕上げ：スプリント（バイク/坂ダッシュ）</div><div class="ex-meta"><span class="badge">8×20秒</span><span class="badge">40秒休</span></div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ボックスジャンプ or 立ち幅跳び</div><div class="ex-meta"><span class="badge pow">パワー</span><span class="badge">4×3</span><span class="badge">着地静かに</span></div><div class="cue">着地は“音を立てない”＝膝を柔らかく吸収。高さより1発の質。台からは飛び降りず一歩で降りる（膝を守る）。</div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">デッドリフト（背中まっすぐ・上限60kg）</div><div class="ex-meta"><span class="badge">3×5</span><span class="badge w">50–60kg</span><span class="badge">腰は無理しない</span></div><div class="cue">背中を丸めないのが絶対。バーはスネに沿わせて真上へ。胸を張り、腕で引かず“床を押して立つ”。60kg厳守、少しでも腰に来たら即中止。</div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ヒップスラスト</div><div class="ex-meta"><span class="badge">4×8–10</span><span class="badge w">50–70kg</span><span class="badge">RPE8</span></div><div class="cue">アゴを引いて肋骨を締める。腰を反って上げず“お尻の力”で押す。トップで1秒止めてお尻を締めきる。</div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ワンハンドDBロウ（引く追加）</div><div class="ex-meta"><span class="badge">3×8–10/側</span><span class="badge w">14–20kg</span></div><div class="cue">背中は床と平行。肘を“腰のポケット”へ引き、肩甲骨から動かす。体をひねって上げない。</div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">腕立て</div><div class="ex-meta"><span class="badge">3×限界手前</span></div><div class="cue">頭〜かかとを一直線（腰を落とさない）。肘は45度、胸から下ろす。あと1〜2回残して終える。</div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">アブローラー</div><div class="ex-meta"><span class="badge">3×8–12</span><span class="badge">締め・膝コロから</span></div><div class="cue">膝コロから。腰を反らさず、お腹を丸めたまま出る。出す時に息を吐く。腰に効いたら距離を短く。</div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">仕上げ：スプリント（バイク/坂ダッシュ）</div><div class="ex-meta"><span class="badge">8×20秒</span><span class="badge">40秒休</span></div><div class="cue">全力の8〜9割で20秒。フォームが崩れたらそこで終了。休憩40秒はサボらず回復。就寝3〜4時間前までに。</div></div></li>
   </ul>
   <div class="dayfoot"><button class="resetday" data-reset="B">この日のチェックを消す</button></div>
 </details>
@@ -193,11 +194,11 @@
   </summary>
   <div class="progress"><i data-bar="C"></i></div>
   <ul class="list" data-day="C">
-    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">スクワット</div><div class="ex-meta"><span class="badge">4×5–8</span><span class="badge w">55–70kg</span><span class="badge">RPE7-8・潰さない</span></div></div></li>
-    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ブルガリアンスクワット（単脚＝バランス）</div><div class="ex-meta"><span class="badge">3×8/脚</span><span class="badge w">片手8–12kg</span></div></div></li>
-    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ケトルベルスイング（軽め・フォーム優先）</div><div class="ex-meta"><span class="badge">3×10</span><span class="badge w">12–16kg</span><span class="badge">違和感で中止</span></div></div></li>
-    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">アブローラー</div><div class="ex-meta"><span class="badge">3×8–12</span><span class="badge">締め・膝コロから</span></div></div></li>
-    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">仕上げ：縄跳びサーキット</div><div class="ex-meta"><span class="badge">10分</span><span class="badge">インターバル</span></div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">スクワット</div><div class="ex-meta"><span class="badge">4×5–8</span><span class="badge w">55–70kg</span><span class="badge">RPE7-8・潰さない</span></div><div class="cue">膝から曲げず“股関節から座る”。膝とつま先は同じ向き（膝を内に入れない）。背中はまっすぐ。潰れる重さは扱わない。</div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ブルガリアンスクワット（単脚＝バランス）</div><div class="ex-meta"><span class="badge">3×8/脚</span><span class="badge w">片手8–12kg</span></div><div class="cue">体重の8割は前脚に。上体はやや前傾でお尻に乗せる。後ろ足は“置くだけ”。ぐらつかない範囲で深く。</div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">ケトルベルスイング（軽め・フォーム優先）</div><div class="ex-meta"><span class="badge">3×10</span><span class="badge w">12–16kg</span><span class="badge">違和感で中止</span></div><div class="cue">腕で上げない＝股関節のスナップで“飛ばす”。胸〜目の高さで十分（頭上まで振らない）。背中まっすぐ、トップでお尻を締める。</div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">アブローラー</div><div class="ex-meta"><span class="badge">3×8–12</span><span class="badge">締め・膝コロから</span></div><div class="cue">膝コロから。腰を反らさず、お腹を丸めたまま出る。出す時に息を吐く。腰に効いたら距離を短く。</div></div></li>
+    <li class="ex"><span class="cb"><svg viewBox="0 0 24 24"><polyline points="4,12 10,18 20,6"/></svg></span><div class="ex-body"><div class="ex-name">仕上げ：縄跳びサーキット</div><div class="ex-meta"><span class="badge">10分</span><span class="badge">インターバル</span></div><div class="cue">かかとをつけず母指球で小さく弾む。姿勢は高く、肘は体の近く（手首で回す）。30秒跳ぶ→30秒休む×10。</div></div></li>
   </ul>
   <div class="dayfoot"><button class="resetday" data-reset="C">この日のチェックを消す</button></div>
 </details>

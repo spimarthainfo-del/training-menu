@@ -57,7 +57,8 @@
   .daybtn.done small{color:var(--ok)}
   .week-status{margin-top:12px;text-align:center;font-size:14px;font-weight:700}
   .week-status.hit{color:var(--ok)}
-  .miniclear{display:block;margin:10px auto 0;background:none;border:none;color:var(--sub);font-size:12px;text-decoration:underline;cursor:pointer}
+  .miniclear{display:block;margin:14px auto 0;background:var(--bg);border:1px solid var(--line);color:var(--sub);font-size:13px;font-weight:600;padding:12px 16px;min-height:46px;width:100%;max-width:240px;border-radius:12px;cursor:pointer;-webkit-appearance:none}
+  .miniclear:active{background:var(--line);transform:scale(.98)}
 
   /* Accordion day */
   .acc-head{
@@ -289,8 +290,11 @@
       var d=btn.getAttribute('data-week'); week[d]=!week[d]; save('week',week); renderWeek();
     });
   });
-  document.getElementById('weekClear').addEventListener('click',function(){
+  var wc=document.getElementById('weekClear');
+  wc.addEventListener('click',function(){
     week={A:false,B:false,C:false}; save('week',week); renderWeek();
+    var t=wc.textContent; wc.textContent='リセットしました ✓';
+    setTimeout(function(){ wc.textContent=t; }, 1200);
   });
   renderWeek();
 })();

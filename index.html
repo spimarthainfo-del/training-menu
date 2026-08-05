@@ -246,6 +246,7 @@
   function save(k,v){try{localStorage.setItem(KEY+k,JSON.stringify(v))}catch(e){}}
 
   // ---- 各日のチェック ----
+  var dayReset={};
   ['A','B','C'].forEach(function(day){
     var ul=document.querySelector('ul[data-day="'+day+'"]');
     var items=[].slice.call(ul.querySelectorAll('li.ex'));
@@ -265,10 +266,11 @@
         state[i]=!state[i]; save('day'+day,state); render();
       });
     });
+    function resetDay(){ state=items.map(function(){return false}); save('day'+day,state); render(); }
+    dayReset[day]=resetDay;
     var rb=document.querySelector('[data-reset="'+day+'"]');
     rb.addEventListener('click',function(ev){
-      ev.preventDefault(); ev.stopPropagation();
-      state=items.map(function(){return false}); save('day'+day,state); render();
+      ev.preventDefault(); ev.stopPropagation(); resetDay();
     });
     render();
   });
@@ -293,8 +295,9 @@
   var wc=document.getElementById('weekClear');
   wc.addEventListener('click',function(){
     week={A:false,B:false,C:false}; save('week',week); renderWeek();
-    var t=wc.textContent; wc.textContent='リセットしました ✓';
-    setTimeout(function(){ wc.textContent=t; }, 1200);
+    ['A','B','C'].forEach(function(d){ if(dayReset[d]) dayReset[d](); });   // 全種目のチェックも消す
+    wc.textContent='リセットしました ✓';
+    setTimeout(function(){ wc.textContent='今週をリセット'; }, 1200);
   });
   renderWeek();
 })();
